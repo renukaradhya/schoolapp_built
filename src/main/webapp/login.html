@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>icarat</title>
+    <link rel="stylesheet" href="css/ext_lib/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/Pretty-Footer.css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ext_lib/angular-block-ui.min.css">
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Google-Style-Login.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+ 
+	<script src="scripts/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <script src="scripts/angular/angular.min.js"></script>
+    <script src="scripts/angular/angular-route.js"></script>
+    <script src="scripts/angular/angular-route.min.js"></script>
+    <script src="scripts/angular/angular-resource.min.js"></script>
+    <script src="scripts/angular/angular-block-ui.min.js"></script>
+    <script src="scripts/angular/angular-local-storage.js"></script>
+    <script src="scripts/angular/ngStorage.js"></script>
+    <script src="scripts/angular/ngStorage.min.js"></script>
+
+    <!--<script src="scripts/check.js"></script>-->
+    <!--<script src="scripts/config.js"></script>-->
+
+    <script src="scripts/check.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/admin/ad_login.js"></script>
+    <script src="scripts/br_manager/pc_login.js"></script>
+    <script src="scripts/ps/ps_login.js"></script>
+    <script src="scripts/br_operator/br_op_login.js"></script>
+    <script src="scripts/faculties/faculty_logins.js"></script>
+
+    <!--<script src="scripts/admin/admin.min.js"></script>-->
+    <!--<script src="scripts/ps/orgadmin.min.js"></script>-->
+    <!--<script src="scripts/br_manager/manager.min.js"></script>-->
+    <!--<script src="scripts/br_operator/operator.min.js"></script>-->
+    <!--<script src="scripts/faculties/faculty.min.js"></script>-->
+
+    <script type="text/javascript">
+        angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+    </script>
+</head>
+
+
+<body data-ng-app="check_app" id="home">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">iCarat Technology</a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="index.html">Home </a></li>
+                    <li role="presentation"><a href="products.html">Products </a></li>
+                    <li role="presentation"><a href="services.html">Services </a></li>
+                    <li role="presentation"><a href="aboutus.html">About Us</a></li>
+                    <li role="presentation"><a href="contactus.html">Contact </a></li>
+                    <li role="presentation" class="active"><a href="#">Login </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="login-card"><img src="images/avatar_2x.png" class="profile-img-card" />
+        <p class="profile-name-card"> </p>
+            <p class="text-center" style="margin-bottom: 10px; text-align: left; color: #FF5733; font-size: 13px;">{{response_message}}</p>
+            <form class="form-signin">
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <select class="form-control droplist" ng-model="login_as" ng-init="login_as = 'admin'" style="line-height: 1.5">
+                                    <option value="admin">Admin</option>
+                                    <option value="orgadmin">Org Admin</option>
+                                    <option value="branchmanager">Branch Manager</option>
+                                    <option value="branchOperator">Branch Operator</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            <form class="form-signin"  ng-submit="adminLogin()" ng-if="login_as == 'admin'" data-ng-app="ad_login_app" data-ng-controller="adminloginController">
+                <span class="reauth-email"> </span>
+                <input type="text" required required ng-model="username" placeholder="Username" autofocus class="form-control" id="inputEmail1" />
+                <input type="password" ng-model="password" required placeholder="Password" class="form-control" id="inputPassword1" />
+               <!--  <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" />Remember me</label>
+                    </div>
+                </div> -->
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- <a href="#" class="forgot-password">Forgot your password?</a> -->
+            <form class="form-horizontal form-signin" ng-submit="login()" ng-if="login_as == 'orgadmin'" data-ng-app="login_app" data-ng-controller="loginController">
+                <span class="reauth-email"> </span>
+                <input type="text" required required ng-model="username" placeholder="Username" autofocus class="form-control" id="inputEmail" />
+                <input type="password" ng-model="password" required placeholder="Password" class="form-control" id="inputPassword" />
+               <!--  <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" />Remember me</label>
+                    </div>
+                </div> -->
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- <a href="#" class="forgot-password">Forgot your password?</a> -->
+             <form class="form-horizontal form-signin"  ng-submit="login()" ng-if="login_as == 'branchmanager'" data-ng-app="branchManager_login" data-ng-controller="loginCtrl">
+                <span class="reauth-email"> </span>
+                <input type="text" required required ng-model="username" placeholder="Username" autofocus class="form-control" id="inputEmail" />
+                <input type="password" ng-model="password" required placeholder="Password" class="form-control" id="inputPassword" />
+               <!--  <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" />Remember me</label>
+                    </div>
+                </div> -->
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- <a href="#" class="forgot-password">Forgot your password?</a> -->
+            <form class="form-horizontal form-signin" ng-submit="login()" ng-if="login_as == 'branchOperator'" data-ng-app="branchOperator_login" data-ng-controller="bo_loginCtrl">
+                <span class="reauth-email"> </span>
+                <input type="text" required required ng-model="username" placeholder="Username" autofocus class="form-control" id="inputEmail" />
+                <input type="password" ng-model="password" required placeholder="Password" class="form-control" id="inputPassword" />
+               <!--  <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" />Remember me</label>
+                    </div>
+                </div> -->
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- <a href="#" class="forgot-password">Forgot your password?</a> -->
+            <form class="form-horizontal form-signin"  ng-submit="login()" ng-if="login_as == 'faculty'" data-ng-app="faculties_login" data-ng-controller="faculties_loginCtrl">
+                <span class="reauth-email"> </span>
+                <input type="text" required required ng-model="username" placeholder="Username" autofocus class="form-control" id="inputEmail" />
+                <input type="password" ng-model="password" required placeholder="Password" class="form-control" id="inputPassword" />
+               <!--  <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" />Remember me</label>
+                    </div>
+                </div> -->
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- <a href="#" class="forgot-password">Forgot your password?</a> -->
+	</div>
+	<footer>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-navigation">
+                <h3><a href="#">iCarat Technology Services LLP.</a></h3>
+                <p class="links"><a href="index.html">Home </a>  · <a href="products.html">Products </a> · <a href="aboutus.html">About Us</a>  · <a href="contactus.html">Contact </a></p>
+                <p class="company-name">iCarat Technology © 2015 </p>
+            </div>
+            <div class="col-md-4 col-sm-6 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">No 34 tunganagar</span> Vishwaneedam Post, Bengaluru-91</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-left"> +91-9611350595</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="#" target="_blank">info@icaratsolutions.com</a></p>
+                </div>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-4 footer-about">
+                <h4>About the company</h4>
+                <p>We provide a really simple and fast web design and development solution you will inevitably find a web design solutions that fits your needs..</p>
+                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
